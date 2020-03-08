@@ -1,5 +1,6 @@
 function isCar(car1, car2, car3) {
-    // return 
+    var arr = [car1, car2, car3];
+    return arr.every(Boolean);
 }
 
 console.log(isCar(true, true, true));
