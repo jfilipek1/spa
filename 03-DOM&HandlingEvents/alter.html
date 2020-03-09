@@ -4,10 +4,10 @@
 		<title>Pink Floyd</title>
 		<meta charset="UTF-8">
 	</head>
-	<body>
-		<h1>Another Brick in the Wall</h1>
-		<h3>Pink Floyd</h3>
-		<p>We don't need no education<br>
+	<body ondblclick="yellow()">
+		<h1 onclick="part2(this)">Another Brick in the Wall</h1>
+		<h3 onclick="bandDetails()">Pink Floyd</h3>
+		<p onclick="italic()" oncopy="copyright()" id="lyrics">We don't need no education<br>
 		We don't need no thought control<br>
 		No dark sarcasm in the classroom<br>
 		Teachers leave them kids alone<br>
@@ -15,12 +15,31 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;">Pink Floyd were an English rock band formed in London.<br>
+		<p style="visibility: hidden;" id="details">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
 		
 		<script>
-			// a JavaScript code here ...
+			function part2(element){
+				element.innerHTML = "Another Brick in the Wall (Part 2)"
+			}
+            
+            function bandDetails(){
+            document.getElementById("details").style.visibility = "visible";
+            }
+            
+            function italic(){
+                        document.getElementById("lyrics").style.fontStyle = "italic";
+
+            }
+            
+            function yellow(){
+            document.body.style.backgroundColor = "yellow";
+            }
+            
+            function copyright(){
+            alert("Copyright!");
+            }
 			
 		</script>
 	</body>
