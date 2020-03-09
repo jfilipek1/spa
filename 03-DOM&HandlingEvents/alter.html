@@ -15,10 +15,12 @@
 		All in all it's just another brick in the wall<br>
 		All in all you're just another brick in the wall</p>
 		
-		<p style="visibility: hidden;" id="details">Pink Floyd were an English rock band formed in London.<br>
+		<p style="visibility: hidden;" onclick="show()" id="details">Pink Floyd were an English rock band formed in London.<br>
 		They achieved international acclaim with their progressive<br>
 		and psychedelic music.</p>
 		
+        <img src="https://upload.wikimedia.org/wikipedia/en/d/d6/Pink_Floyd_-_all_members.jpg" style="visibility: hidden;" id="photo" />
+        
 		<script>
 			function part2(element){
 				element.innerHTML = "Another Brick in the Wall (Part 2)"
@@ -39,6 +41,10 @@
             
             function copyright(){
             alert("Copyright!");
+            }
+            
+            function show(){
+             document.getElementById("photo").style.visibility = "visible";
             }
 			
 		</script>
