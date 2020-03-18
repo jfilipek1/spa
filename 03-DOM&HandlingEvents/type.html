@@ -20,10 +20,44 @@
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
 		
-		<textarea rows="15" cols="50"></textarea><br>
+		<textarea rows="15" cols="50" oninput="startTimer()"></textarea><br>
+		<span id="timer"></span>
 		
 		<script>
-			// a JavaScript code here ...
+				var timer = 30;
+				var started = false;
+				let counter;
+
+				function startTimer() {
+					if (!started) {
+						counter = setInterval(countdown, 1000);
+						started = true;
+					}
+				}
+
+				function countdown() {
+					timer = timer - 1;
+					if (timer <= 0) {
+						clearInterval(counter);
+						document.getElementById("timer").innerHTML = "End";
+						setResults();
+						return;
+					}
+					document.getElementById("timer").innerHTML = timer + " seconds" + " left";
+				}
+				
+				function setResults() {
+					let textArea = document.querySelector("textarea").value;
+					let words = textArea.split(" ").length;
+					let chars = textArea.trim().length;
+					let resultWords = document.createElement("p");
+					let resultChars = document.createElement("p");
+					resultWords.innerHTML = `Words: ${words}`;
+					resultChars.innerHTML = `Characters: ${chars}`;
+					document.body.appendChild(resultWords);
+					document.body.appendChild(resultChars);
+					textArea.value = "";
+				}
 			
 		</script>
 		
