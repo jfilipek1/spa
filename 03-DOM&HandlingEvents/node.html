@@ -3,10 +3,19 @@
 	<head>
 		<title>Create DOM elements</title>
 		<meta charset="UTF-8">
+		<style>
+			table, td {
+			border: 1px solid #000000;
+			border-collapse: collapse;
+			}
+		</style>
 	</head>
 	<body>
 		<script>
-			// a JavaScript code here ...
+			let tabela = document.createElement("table");
+			tabela.innerHTML = "<tr><td>1</td><td>2</td></tr><tr><td>3</td><td>4</td></tr>";
+			document.body.appendChild(tabela);
+		</script>
 			
 		</script>
 	</body>
