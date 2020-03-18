@@ -9,13 +9,14 @@
 <body>
 	<h1>Filling in a form</h1>
 	<form>
-		<p>University:<br><input type="text"></p>
-		<p>Address:<br><input type="text"></p>
+		<p>University:<br><input type="text" id="university"></p>
+		<p>Address:<br><input type="text" id="address"></p>
 		<button type="button">Hint</button>
 	</form>
 
 	<script>
-		// a JavaScript code here ...
+		document.getElementById("university").value = university
+		document.getElementById("address").value = address
 		var university = "Cracow University of Economics";
 		var address = "Rakowicka 27, Krakow, POLAND";
 
