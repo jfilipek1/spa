@@ -21,14 +21,13 @@
 
     <script>
 
-function add1() {
+	$("button").click(function() {
+            $("ol").append(`<li> ${document.getElementById("input").value} </li>`)
+        })
 
-    var text = document.getElementById("text").value; 
-
-    var li = "<li>" + text + "</li>";
-
-    document.getElementById("list").appendChild(li);
-}
+        $("ol").on("dblclick", "li", function() {
+            $(this).remove()
+        })
 
     </script>
 </body>
