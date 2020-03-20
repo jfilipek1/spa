@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Personal Data</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		<h1>Student</h1>
+		<p>To show click "show"</p>
+		<input type="button" value="Show" onclick="connect()">
+		<ol type="1" id="personalData"></p>
+
+		<script>
+			function connect(){
+				var xmlhttp = new XMLHttpRequest();
+				var url = "people.json";
+
+				xmlhttp.onreadystatechange = function() {
+    					if (this.readyState == 4 && this.status == 200) {
+        					var myArr = JSON.parse(this.responseText);
+						display(myArr);
+    				}
+			};
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+
+			}
+			
+			function display(arr) {
+    				var out = "";
+   				var i;
+    				for(i = 0; i < arr.length; i++) {
+       					 out += "<li>" + arr[i].name + " " + arr[i].surname.toUpperCase() + ", " + arr[i].country + "</li>";
+    				}
+    				document.getElementById("personalData").innerHTML = out;
+			}	
+		</script>
+
+	</body>
+</html>
