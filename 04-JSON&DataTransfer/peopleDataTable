@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Personal Data</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script
+        		src="https://code.jquery.com/jquery-3.4.1.js"
+        		integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        		crossorigin="anonymous">
+   		</script>
+		<script type"text/javascript" src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	</head>
+	<body>
+		<h1>Personal data</h1>
+
+
+    <script>
+            $(document).ready(function () {
+                $("#personal-data").DataTable( {
+                    ajax : {
+                        "url" : "people.json",
+                        dataSrc: ""
+                    },
+                    "columns" : [
+                        { "data" : "name" },
+                        { "data" : "surname" },
+                        { "data" : "age" },
+                        { "data" : "country" },
+                        { "data" : "email" },
+                    ]
+                });
+            } );
+        </script>
+
+        <table id="personal-data" class="display">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Country</th>
+                    <th>Email</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Row 1 Data 1</td>
+                    <td>Row 1 Data 2</td>
+                </tr>
+                <tr>
+                    <td>Row 2 Data 1</td>
+                    <td>Row 2 Data 2</td>
+                </tr>
+            </tbody>
+        </table>
+	</body>
+	</body>
+</html>
