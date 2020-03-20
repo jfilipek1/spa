@@ -15,6 +15,7 @@
 				var URL = 'http://api.nbp.pl/api/cenyzlota/last/30/?format=json';
 				var xhr = new XMLHttpRequest();
 				xhr.onreadystatechange = function(){
+					display(this);
    				 if (this.readyState == 4 && this.status == 200) {
       				 displayData(this);
     					}
@@ -28,6 +29,9 @@
 				console.log("Status text:", r.statusText);
 				console.log("-----");
 			};
+			function displayData(request){
+				console.log(request.response);
+			}
 		</script>
 <p id="demo"></p>
 	</body>
