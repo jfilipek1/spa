@@ -7,11 +7,33 @@
 	<body>
 		<h1>Student</h1>
 		<p>Open a console and then click the button</p>
-		<input type="button" value="Display student's data">
+		<input type="button" value="Display student's data" onclick="connect()">
 		<p id="personalData"></p>
 
 		<script>
+			function connect(){
+				var xmlhttp = new XMLHttpRequest();
+				var url = "name.json";
 
+				xmlhttp.onreadystatechange = function() {
+    					if (this.readyState == 4 && this.status == 200) {
+        					var myArr = JSON.parse(this.responseText);
+						display(myArr);
+    				}
+			};
+			xmlhttp.open("GET", url, true);
+			xmlhttp.send();
+
+			}
+			
+			function display(arr) {
+    				var out = "";
+   				var i;
+    				for(i = 0; i < arr.length; i++) {
+       					 out += arr[i].name + " " + arr[i].surname;
+    				}
+    				document.getElementById("personalData").innerHTML = out;
+			}	
 		</script>
 
 	</body>
