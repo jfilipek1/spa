@@ -30,7 +30,7 @@ var chart = new Chart(ctx, {
     options: {}
 });
 
-function getData() {
+function getGoldPrices() {
             let method = "GET";
             let api = `http://api.nbp.pl/api/cenyzlota/last/10?format=json`;
             let xhr = new XMLHttpRequest();
@@ -47,7 +47,7 @@ function getData() {
             }
             xhr.send();
         }
-		getData();
+		getGoldPrices();
     </script>
 	</body>
 </html>
