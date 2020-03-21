@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Gold price</title>
+		<meta charset="UTF-8">
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+	</head>
+	<body>
+		<h1>Gold price</h1>
+
+		<canvas id="myChart"></canvas>
+
+    <script>
+			
+var ctx = document.getElementById('myChart').getContext('2d');
+var chart = new Chart(ctx, {
+    type: 'line',
+
+    data: {
+        labels: [],
+        datasets: [{
+            label: 'Gold price 10 DAYS',
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [0, 10, 5, 2, 20, 30, 45]
+        }]
+    },
+
+    // Configuration options go here
+    options: {}
+});
+
+function getData() {
+            let method = "GET";
+            let api = `http://api.nbp.pl/api/cenyzlota/last/10?format=json`;
+            let xhr = new XMLHttpRequest();
+            xhr.open(method, api);
+            xhr.onreadystatechange = function() {
+                if(this.readyState == 4 && this.status == 200) {
+                    let gold = JSON.parse(this.responseText);
+                    for(let i = 0; i < 10; i++) {
+                        chart.data.labels.push(gold[i].data);
+                        chart.data.datasets[0].data.push(gold[i].cena);
+                        chart.update();
+                    }
+                }
+            }
+            xhr.send();
+        }
+		getData();
+    </script>
+	</body>
+</html>
