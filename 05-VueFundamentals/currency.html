@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<title>Currency rates</title>
+        <meta charset="UTF-8">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+        <div id="app">
+            <table style="border-collapse: collapse">
+                <thead>
+                    <td>Currency</td>
+                    <td>Code</td>
+                    <td>Mid</td>
+                </thead>
+                <tr v-for="currency in curriencies">
+                    <td>{{ currency.currency }}</td>
+                    <td>{{ currency.code }}</td>
+                    <td>{{ currency.mid }}</td>
+                </tr>
+            </table>
+        </div>
+        
+		<script>
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    curriencies: []
+                },
+                created() {
+                    fetch('https://api.nbp.pl/api/exchangerates/tables/a/')
+                        .then(response => response.json())
+                        .then(data => {
+                            this.curriencies = data[0].rates
+                        });
+                }
+            });
+        </script>
+        
+        <style>
+            td {
+                border: 1px solid black;
+            }
+
+            thead {
+                font-weight: bold;
+            }
+        </style>
+
+	</body>
+</html>
