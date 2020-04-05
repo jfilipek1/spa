@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    <input type="checkbox" value="dt" v-model="selectedCourses">
+    <label for="databases">Design Thinking</label>
+    <input type="checkbox" value="ai" v-model="selectedCourses">
+    <label for="ai">Sztuczna inteligencja</label>
+    <input type="checkbox" value="spa" v-model="selectedCourses">
+    <label for="programming">SPA</label>
+    <input type="checkbox" value="psych" v-model="selectedCourses">
+    <label for="spa">Psychologia</label>
+    <input type="checkbox" value="sm" v-model="selectedCourses">
+    <label for="mobiles">Systemy mobilne</label>
+    <p>Wybrane kursy: ({{ selectedCourses.length }})</p>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        selectedCourses: []
+      }
+    });
+  </script>
+</body>
+</html>
