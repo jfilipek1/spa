@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+        <label for="firstname">First Name</label>
+        <input type="text" id="firstname" value="FirstName" v-model="person.firstname"><br>
+        <label for="lastname">Last Name</label>
+        <input type="text" id="lastname" value="LastName" v-model="person.lastname"><br>
+        <label for="age">Age</label>
+        <input type="number" id="age" v-model="person.age"><br>
+        <label>Gender</label>
+        <input type="radio" id="female" value="Female" v-model="person.sex">
+        <label for="female">Female</label>
+        <input type="radio" id="male" value="Male" v-model="person.sex">
+        <label for="male">Male</label><br>
+        <label for="education">Education</label>
+        <select v-model="person.education" id="education">
+            <option>None</option>
+            <option>Elementary education</option>
+            <option>High school</option>
+            <option>University degree</option>
+        </select><br>
+        <label for="skills">Skills</label>
+            <input type="checkbox" id="computer" value="Computer" v-model="person.skills">
+            <label for="computer">Computer skills</label>
+            <input type="checkbox" id="licence" value="DriversLicense" v-model="person.skills">
+            <label for="licence">Driver's license</label>
+            <input type="checkbox" id="creativity" value="Creativity" v-model="person.skills">
+            <label for="creativity">Creativity</label>
+            <input type="checkbox" id="teamwork" value="Teamwork" v-model="person.skills">
+            <label for="teamwork">Teamwork ability</label><br>
+    <button @click="save()">Save</button><br>
+    <button @click="clearStorage()">Clear</button>
+  </div>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        person: {
+            firstname: '',
+            lastname: '',
+            age: '',
+            gender: '',
+            education: '',
+            skills: []
+        }
+      },
+      methods: {
+        save() {
+            localStorage.setItem('person', JSON.stringify(this.person))
+        },
+        clearStorage() {
+            localStorage.clear();
+            this.person.firstname = ''
+            this.person.lastname = ''
+            this.person.age = ''
+            this.person.gender = ''
+            this.person.education = ''
+            this.person.skills = []
+        }
+      },
+      mounted() {
+        let storage = JSON.parse(localStorage.getItem('person'))
+        if(storage != null) {
+            this.person.firstname = storage.firstname
+            this.person.lastname = storage.lastname
+            this.person.age = storage.age
+            this.person.gender = storage.gender
+            this.person.education = storage.education
+            this.person.skills = storage.skills
+        }
+      }
+    });
+  </script>
+</body>
+</html>
